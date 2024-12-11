@@ -1,4 +1,5 @@
 import { ButtonClick } from "./component/ButtonClick";
+import { RemoveButton } from "./component/RemoveButton";
 import { ShoppingCart } from "./component/ShoppingCart";
 import { SnapRouteSelector } from "./component/SnapRouteSelector";
 import { TestButtomClick } from "./component/TestButtomClick";
@@ -11,6 +12,7 @@ export default function Home() {
     <ShoppingCart/>
     <SnapRouteSelector />
     <TestButtomClick />
+    <RemoveButton />
 </div>
   );
 }
