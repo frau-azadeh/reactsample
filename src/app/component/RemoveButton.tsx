@@ -10,11 +10,15 @@ export const RemoveButton:React.FC = () => {
     const buttonClickDecrese = () =>{
         setCount(count>0 ? count-1:0);
     }
+    const buttonReset =() =>{
+        setCount(0);
+    }
   return (
     <div>
         <p>count is : {count}</p>
         <button className='bg-red-500 rounded-lg text-white m-2 p-2' onClick={buttonClickDecrese}>Decrese</button> 
         <button className='bg-green-500 rounded-lg text-white m-2 p-2' onClick={buttonClickIncres}>Increse</button>
+        <button className='bg-blue-500 rounded-lg text-white m-2 p-2' onClick={buttonReset}>Reset</button>
     </div>
   )
 }
