@@ -5,11 +5,21 @@ import { ShoppingCart } from "./component/ShoppingCart";
 import { SnapRouteSelector } from "./component/SnapRouteSelector";
 import { TestButtomClick } from "./component/TestButtomClick";
 import { TimeruseState } from "./component/TimeruseState";
+import { Like } from "./component/Like";
+import { Rating } from "./component/Rating";
+import { ChangeBackGround } from "./component/ChangeBackGround";
+import { TextInput } from "./component/TextInput";
+import { PageViews } from "./component/PageViews";
 
 export default function Home() {
   return (
 <div>
   <h1>hi my best</h1>
+    <PageViews/>
+    <TextInput/>
+    <ChangeBackGround/>
+    <Rating/>
+    <Like />
     <CartCounter/>
     <TimeruseState/>
     <ButtonClick/>
