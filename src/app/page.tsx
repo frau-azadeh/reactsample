@@ -1,6 +1,8 @@
 import { ButtonClick } from "./component/ButtonClick";
 import { ShoppingCart } from "./component/ShoppingCart";
 import { SnapRouteSelector } from "./component/SnapRouteSelector";
+import { TestButtomClick } from "./component/TestButtomClick";
+
 export default function Home() {
   return (
 <div>
@@ -8,6 +10,7 @@ export default function Home() {
     <ButtonClick/>
     <ShoppingCart/>
     <SnapRouteSelector />
+    <TestButtomClick />
 </div>
   );
 }
