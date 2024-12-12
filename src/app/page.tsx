@@ -13,11 +13,13 @@ import { PageViews } from "./component/PageViews";
 import { StarRating } from "./component/StarRating";
 import { TodoList } from "./component/TodoList";
 import { Categories } from "./component/Categories";
+import { PasswordInput } from "./component/PasswordInput";
 
 export default function Home() {
   return (
 <div>
   <h1>hi my best</h1>
+    <PasswordInput/>
     <Categories/>
     <TodoList/>
     <StarRating/>
