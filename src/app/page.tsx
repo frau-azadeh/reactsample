@@ -14,11 +14,13 @@ import { StarRating } from "./component/StarRating";
 import { TodoList } from "./component/TodoList";
 import { Categories } from "./component/Categories";
 import { PasswordInput } from "./component/PasswordInput";
+import { PassengerCounter } from "./component/PassengerCounter";
 
 export default function Home() {
   return (
 <div>
   <h1>hi my best</h1>
+    <PassengerCounter/>
     <PasswordInput/>
     <Categories/>
     <TodoList/>
