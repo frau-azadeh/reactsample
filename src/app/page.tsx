@@ -16,11 +16,13 @@ import { Categories } from "./component/Categories";
 import { PasswordInput } from "./component/PasswordInput";
 import { PassengerCounter } from "./component/PassengerCounter";
 import { ProductFilter } from "./component/ProductFilter";
+import { ProductFilterWithEffect } from "./component/useeffect/ProductFilterWithEffect";
 
 export default function Home() {
   return (
 <div>
   <h1>hi my best</h1>
+    <ProductFilterWithEffect/>
     <ProductFilter />
     <PassengerCounter/>
     <PasswordInput/>
