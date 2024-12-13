@@ -15,11 +15,13 @@ import { TodoList } from "./component/TodoList";
 import { Categories } from "./component/Categories";
 import { PasswordInput } from "./component/PasswordInput";
 import { PassengerCounter } from "./component/PassengerCounter";
+import { ProductFilter } from "./component/ProductFilter";
 
 export default function Home() {
   return (
 <div>
   <h1>hi my best</h1>
+    <ProductFilter />
     <PassengerCounter/>
     <PasswordInput/>
     <Categories/>
