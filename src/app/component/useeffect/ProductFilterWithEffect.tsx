@@ -12,13 +12,13 @@ export const ProductFilterWithEffect: React.FC = () => {
     const [filteredProducts, setFilteredProducts] = useState(products);
 
     useEffect(() => {
-        // این افکت زمانی اجرا می‌شود که فیلتر تغییر کند
+       
         if (filter === 'All') {
-            setFilteredProducts(products); // همه محصولات نمایش داده شوند
+            setFilteredProducts(products); 
         } else {
             setFilteredProducts(products.filter((product) => product.category === filter));
         }
-    }, [filter]); // وابستگی به `filter`
+    }, [filter]); 
 
     return (
         <div className="p-4">
