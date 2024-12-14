@@ -17,11 +17,15 @@ import { PasswordInput } from "./component/PasswordInput";
 import { PassengerCounter } from "./component/PassengerCounter";
 import { ProductFilter } from "./component/ProductFilter";
 import { ProductFilterWithEffect } from "./component/useeffect/ProductFilterWithEffect";
+import { ShowApi } from "./component/useeffect/ShowApi";
+import {PostListWithUseEffect} from "./component/useeffect/PostListWithUseEffect";
 
 export default function Home() {
   return (
 <div>
   <h1>hi my best</h1>
+    <PostListWithUseEffect/>
+    <ShowApi/>
     <ProductFilterWithEffect/>
     <ProductFilter />
     <PassengerCounter/>
