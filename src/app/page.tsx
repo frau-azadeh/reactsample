@@ -19,11 +19,13 @@ import { ProductFilter } from "./component/ProductFilter";
 import { ProductFilterWithEffect } from "./component/useeffect/ProductFilterWithEffect";
 import { ShowApi } from "./component/useeffect/ShowApi";
 import PostListWithUseEffect from "./component/useeffect/PostListWithUseEffect";
+import PostSearch from "./component/useeffect/PostSearch";
 
 export default function Home() {
   return (
 <div>
   <h1>hi my best</h1>
+    <PostSearch/>
     <PostListWithUseEffect/>
     <ShowApi/>
     <ProductFilterWithEffect/>
