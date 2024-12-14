@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// تعریف نوع برای پست‌ها
 interface Post {
   id: number;
   title: string;
@@ -10,31 +9,31 @@ interface Post {
 }
 
 const PostsListWithUseEffect: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]); // لیست پست‌ها
-  const [loading, setLoading] = useState<boolean>(true); // وضعیت بارگذاری
-  const [error, setError] = useState<string | null>(null); // پیام خطا
+  const [posts, setPosts] = useState<Post[]>([]); 
+  const [loading, setLoading] = useState<boolean>(true); 
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      setLoading(true); // شروع بارگذاری
-      setError(null); // پاک کردن خطای قبلی
+      setLoading(true);
+      setError(null); 
 
       try {
         const response = await axios.get<Post[]>("https://jsonplaceholder.typicode.com/posts");
-        setPosts(response.data); // ذخیره داده‌ها
+        setPosts(response.data);
       } catch (err) {
         if (err instanceof Error) {
-          setError(err.message); // ذخیره پیام خطا
+          setError(err.message); 
         } else {
           setError("خطای ناشناخته");
         }
       } finally {
-        setLoading(false); // پایان بارگذاری
+        setLoading(false); 
       }
     };
 
-    fetchPosts(); // فراخوانی تابع واکشی داده‌ها
-  }, []); // وابستگی خالی، یعنی فقط یک بار در بارگذاری اولیه اجرا می‌شود
+    fetchPosts(); 
+  }, []); 
 
   if (loading)
     return <p className="text-center text-lg font-semibold text-blue-600">در حال بارگذاری...</p>;
