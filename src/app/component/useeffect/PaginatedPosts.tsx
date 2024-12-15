@@ -44,8 +44,31 @@ export const PaginatedPosts:React.FC = () => {
   const pagininate = (pageNumber : number)=>{
     setCurrentPage(pageNumber);
   }
-  
+
+  const handlePostPerPageChange = (e:React.ChangeEvent<HTMLSelectElement>)=>{
+    setPostPerPage(Number(e.target.value));
+    setCurrentPage(1);
+  }
+
+  if(loading) return <p>بارگذاری پست</p>
+  if(error) return <p>نمایش خطا : {error}</p>
   return (
-    <div>PaginatedPosts</div>
+    <div className='max-w-4xl mx-auto p-4'>
+      <h5 className='text-2xl font-bold text-center text-gray-800 mb-6'>صفحه بندی</h5>
+      <div className='mb-6 flex items-center justify-between'>
+        <label htmlFor="postPerPage" className="text-gray-700">تعداد پستها در هر صفحه : </label>
+        <select
+          id="postPerPage"
+          value={postPerPage}
+          onChange={handlePostPerPageChange}
+          className='border border-gray-300 rounded-lg p-2'
+        >
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+        </select>
+      </div>
+
+    </div>
   )
 }
