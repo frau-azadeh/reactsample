@@ -37,6 +37,14 @@ export const PaginatedPosts:React.FC = () => {
     fetchData();
   },[]);
   
+  const indexOfLastPage = currentPage * postPerPage;
+  const indexOFirstPage = indexOfLastPage - postPerPage;
+  const currentPosts = posts.slice(indexOFirstPage, indexOfLastPage);
+
+  const pagininate = (pageNumber : number)=>{
+    setCurrentPage(pageNumber);
+  }
+  
   return (
     <div>PaginatedPosts</div>
   )
