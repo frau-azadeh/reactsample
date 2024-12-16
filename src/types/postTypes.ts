@@ -13,3 +13,10 @@ export interface UseFetchPostsReturn {
 export interface PostsListProps{
     posts: Post[];
 }
+
+export interface PaginationProps{
+   totalPosts: number;
+   postsPerPage: number;
+   currentPge: number;
+   paginate: (pageNumber: Number) => void;
+}
