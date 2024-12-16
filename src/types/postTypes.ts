@@ -17,6 +17,6 @@ export interface PostsListProps{
 export interface PaginationProps{
    totalPosts: number;
    postsPerPage: number;
-   currentPge: number;
+   currentPage: number;
    paginate: (pageNumber: Number) => void;
 }
