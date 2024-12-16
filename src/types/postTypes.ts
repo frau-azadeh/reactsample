@@ -9,3 +9,7 @@ export interface UseFetchPostsReturn {
     loading: boolean;
     error: string | null;
 }
+
+export interface PostsListProps{
+    posts: Post[];
+}
