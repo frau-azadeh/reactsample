@@ -21,7 +21,7 @@ import { ShowApi } from "./component/useeffect/ShowApi";
 import PostListWithUseEffect from "./component/useeffect/PostListWithUseEffect";
 import PostSearch from "./component/useeffect/PostSearch";
 import PostsApp from "./component/useeffect/PostApp";
-import {PaginatedPosts} from "./component/useeffect/PaginatedPosts";
+import PaginatedPosts from "./component/useeffect/PaginatedPosts";
 
 export default function Home() {
   return (
