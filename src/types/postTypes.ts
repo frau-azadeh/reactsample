@@ -18,7 +18,7 @@ export interface PaginationProps{
    totalPosts: number;
    postsPerPage: number;
    currentPage: number;
-   paginate: (pageNumber: Number) => void;
+   paginate: (pageNumber: number) => void;
 }
 
 export interface PostsPerPageSelectorProps{
