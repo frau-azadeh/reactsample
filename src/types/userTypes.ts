@@ -15,3 +15,7 @@ export interface User{
         bs: string;
     };
 }
+
+export interface UserCardProps {
+    user: User;
+}
