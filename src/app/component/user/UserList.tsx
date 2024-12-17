@@ -1,3 +1,4 @@
+'use client'
 import { useFetchUsers } from '@/app/hooks/useFetchUsers'
 import React from 'react'
 import { UserCard } from './UserCard';
