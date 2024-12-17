@@ -24,11 +24,13 @@ import PostsApp from "./component/useeffect/PostApp";
 import PaginatedPosts from "./component/useeffect/PaginatedPosts";
 import PaginatedPosts1 from "./component/pagination/PaginatedPosts1";
 import { UserList } from "./component/user/UserList";
+import { PhotoList } from "./component/photo/PhotoList";
 
 export default function Home() {
   return (
 <div>
   <h1>hi my best</h1>
+    <PhotoList/>
     <UserList/>
     <PaginatedPosts1/>
     <PaginatedPosts/>

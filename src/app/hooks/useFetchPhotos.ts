@@ -1,9 +1,9 @@
+
 import { useEffect, useState } from "react";
 import { Photo } from "@/types/photoTypes";
 import { getPhotos } from "@/api/photoApi";
-import { fileURLToPath } from "url";
 
-export const useFetchPosts = () =>{
+export const useFetchPhotos = () =>{
     const [photos, setPhotos] = useState <Photo[]>([]);
     const [loading, setLoading] = useState <boolean> (true);
     const [error, setError] =useState <string | null> (null);
