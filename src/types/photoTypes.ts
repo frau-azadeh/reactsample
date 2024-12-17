@@ -4,3 +4,7 @@ export interface Photo {
     url: string;
     thumbnailUrl: string;
 }
+
+export interface PhotoCardProps {
+    photo: Photo;
+}
