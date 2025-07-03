@@ -57,11 +57,11 @@ This project aims to provide a clean, performant, and developer-friendly login/a
 
 ## ⚙️ Usage
 
-    Start the development server:
+Start the development server:
 
         npm run dev
 
-    Open your browser and visit http://localhost:5173
+Open your browser and visit http://localhost:5173
 
 ## 🧩 Project Structure
 
@@ -80,14 +80,14 @@ This project aims to provide a clean, performant, and developer-friendly login/a
 
 ## 🤝 Contributing
 
-    Contributions are welcome! Feel free to open issues or submit pull requests.
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
-    Please follow the coding style and run prettier before committing.
+Please follow the coding style and run prettier before committing.
 
 ## 📄 License
 
-    This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## 🌟 Contributing
 
-    Developed with 🌻 by Azadeh Sharifi Soltani Feel free to connect and collaborate!
+Developed with 🌻 by Azadeh Sharifi Soltani Feel free to connect and collaborate!
