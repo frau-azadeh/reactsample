@@ -23,18 +23,17 @@ This project aims to provide a clean, performant, and developer-friendly login/a
 ---
 
 ## 📦 Tech Stack
-```
-| Technology       | Description                               |
-| ---------------- | ----------------------------------------- |
-| ![React](https://img.shields.io/badge/React-17.0.2-blue?logo=react)  | Frontend UI library                     |
-| ![TypeScript](https://img.shields.io/badge/TypeScript-4.9-blue?logo=typescript) | Type-safe JavaScript                    |
-| ![Supabase](https://img.shields.io/badge/Supabase-Auth-green?logo=supabase) | Backend as a Service (Auth & DB)       |
-| ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3-blue?logo=tailwind-css) | Utility-first CSS framework             |
-| ![Redux](https://img.shields.io/badge/Redux-Toolkit-purple?logo=redux) | State management                        |
-| ![RTK Query](https://img.shields.io/badge/Redux-RTK_Query-red) | Simplified API data fetching            |
-| ![Prettier](https://img.shields.io/badge/Prettier-Code_Formatter-ff69b4?logo=prettier) | Code formatter                         |
 
-```
+| Technology                                                                 | Description                        |
+| -------------------------------------------------------------------------- | ---------------------------------- |
+| ![React](https://img.shields.io/badge/React-18-blue?logo=react)            | Frontend UI library                |
+| ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript) | Type-safe JavaScript             |
+| ![Supabase](https://img.shields.io/badge/Supabase-Auth-green?logo=supabase) | Backend as a Service (Auth & DB) |
+| ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-blue?logo=tailwind-css) | Utility-first CSS framework   |
+| ![Redux](https://img.shields.io/badge/Redux-Toolkit-purple?logo=redux)     | State management                   |
+| ![RTK Query](https://img.shields.io/badge/RTK_Query-Redux_Ecosystem-red)   | API data fetching & caching        |
+| ![Prettier](https://img.shields.io/badge/Prettier-Code_Formatter-ff69b4?logo=prettier) | Code formatter         |
+
 ---
 
 ## 📥 Installation
