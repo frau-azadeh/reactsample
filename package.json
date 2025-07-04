@@ -11,8 +11,9 @@
     "prettier:fix": "prettier --write ."
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.50.3",
     "axios": "^1.7.9",
-    "next": "15.0.4",
+    "next": "^15.3.5",
     "prettier": "^3.6.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
