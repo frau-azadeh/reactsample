@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { supabase } from '@/utils/supabaseClient';
-import { signupSchema, SignupFormData } from '../lib/validations/auth';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { supabase } from "@/utils/supabaseClient";
+import { signupSchema, SignupFormData } from "../lib/validations/auth";
 
 export default function SmartAuthPage() {
   const router = useRouter();
-  const [formError, setFormError] = useState('');
+  const [formError, setFormError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const {
@@ -21,7 +21,7 @@ export default function SmartAuthPage() {
   });
 
   const onSubmit = async (data: SignupFormData) => {
-    setFormError('');
+    setFormError("");
     setLoading(true);
 
     // 1. Try to sign in first
@@ -31,12 +31,14 @@ export default function SmartAuthPage() {
     });
 
     if (!loginError) {
-      router.push('/profile');
+      router.push("/profile");
       return;
     }
 
     // 2. If login fails because of invalid credentials, try sign up
-    if (loginError.message.toLowerCase().includes('invalid login credentials')) {
+    if (
+      loginError.message.toLowerCase().includes("invalid login credentials")
+    ) {
       const { error: signupError } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
@@ -45,7 +47,7 @@ export default function SmartAuthPage() {
       if (signupError) {
         setFormError(signupError.message);
       } else {
-        router.push('/check-email');
+        router.push("/check-email");
       }
     } else {
       setFormError(loginError.message);
@@ -63,7 +65,7 @@ export default function SmartAuthPage() {
           <label className="block text-sm font-medium mb-1">Email</label>
           <input
             type="email"
-            {...register('email')}
+            {...register("email")}
             className="w-full border rounded-md p-2"
           />
           {errors.email && (
@@ -75,11 +77,13 @@ export default function SmartAuthPage() {
           <label className="block text-sm font-medium mb-1">Password</label>
           <input
             type="password"
-            {...register('password')}
+            {...register("password")}
             className="w-full border rounded-md p-2"
           />
           {errors.password && (
-            <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+            <p className="text-red-500 text-sm mt-1">
+              {errors.password.message}
+            </p>
           )}
         </div>
 
@@ -90,7 +94,7 @@ export default function SmartAuthPage() {
           disabled={loading}
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
         >
-          {loading ? 'Processing...' : 'Continue'}
+          {loading ? "Processing..." : "Continue"}
         </button>
       </form>
     </div>

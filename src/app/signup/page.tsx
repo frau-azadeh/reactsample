@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { signupSchema, SignupFormData } from '../lib/validations/auth';
-import { supabase } from '@/utils/supabaseClient';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signupSchema, SignupFormData } from "../lib/validations/auth";
+import { supabase } from "@/utils/supabaseClient";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SignupPage() {
   const router = useRouter();
-  const [formError, setFormError] = useState('');
+  const [formError, setFormError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const {
@@ -22,7 +22,7 @@ export default function SignupPage() {
 
   const onSubmit = async (data: SignupFormData) => {
     setLoading(true);
-    setFormError('');
+    setFormError("");
 
     try {
       const { error } = await supabase.auth.signUp({
@@ -36,10 +36,10 @@ export default function SignupPage() {
       if (error) {
         setFormError(error.message);
       } else {
-        router.push('/check-email');
+        router.push("/check-email");
       }
     } catch (err) {
-      setFormError('Unexpected error occurred. Please try again.');
+      setFormError("Unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -54,13 +54,11 @@ export default function SignupPage() {
           <label className="block text-sm font-medium mb-1">Email</label>
           <input
             type="email"
-            {...register('email')}
+            {...register("email")}
             className="w-full border rounded-md p-2"
           />
           {errors.email && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.email.message}
-            </p>
+            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
           )}
         </div>
 
@@ -68,7 +66,7 @@ export default function SignupPage() {
           <label className="block text-sm font-medium mb-1">Password</label>
           <input
             type="password"
-            {...register('password')}
+            {...register("password")}
             className="w-full border rounded-md p-2"
           />
           {errors.password && (
@@ -78,16 +76,14 @@ export default function SignupPage() {
           )}
         </div>
 
-        {formError && (
-          <p className="text-red-600 text-sm mt-2">{formError}</p>
-        )}
+        {formError && <p className="text-red-600 text-sm mt-2">{formError}</p>}
 
         <button
           type="submit"
           disabled={loading}
           className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
         >
-          {loading ? 'Signing up...' : 'Sign Up'}
+          {loading ? "Signing up..." : "Sign Up"}
         </button>
       </form>
     </div>

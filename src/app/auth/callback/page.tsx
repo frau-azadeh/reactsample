@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { supabase } from '@/utils/supabaseClient';
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/utils/supabaseClient";
 
 export default function AuthCallbackPage() {
   const router = useRouter();
@@ -15,14 +15,14 @@ export default function AuthCallbackPage() {
       } = await supabase.auth.getSession();
 
       if (session) {
-        router.push('/profile');
+        router.push("/profile");
       } else {
         // در صورت عدم وجود سشن، منتظر تغییر وضعیت می‌مونیم
         supabase.auth.onAuthStateChange((event, session) => {
           if (session) {
-            router.push('/profile');
+            router.push("/profile");
           } else {
-            router.push('/login');
+            router.push("/login");
           }
         });
       }

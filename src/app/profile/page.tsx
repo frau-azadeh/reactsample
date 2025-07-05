@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { supabase } from '@/utils/supabaseClient';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/utils/supabaseClient";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -12,26 +12,27 @@ export default function ProfilePage() {
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
-        router.push('/login');
+        router.push("/login");
       } else {
         setUserEmail(session.user.email ?? null);
       }
       setLoading(false);
     });
-  
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session) {
-        router.push('/login');
-      } else {
-        setUserEmail(session.user.email ?? null);
-      }
-    });
-  
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        if (!session) {
+          router.push("/login");
+        } else {
+          setUserEmail(session.user.email ?? null);
+        }
+      },
+    );
+
     return () => {
       listener?.subscription.unsubscribe();
     };
   }, [router]);
-  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -45,7 +46,7 @@ export default function ProfilePage() {
         className="mt-6 bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
         onClick={async () => {
           await supabase.auth.signOut();
-          router.push('/login');
+          router.push("/login");
         }}
       >
         Logout
