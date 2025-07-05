@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^5.1.1",
     "@supabase/supabase-js": "^2.50.3",
     "axios": "^1.7.9",
+    "bcryptjs": "^3.0.2",
     "next": "^15.3.5",
     "prettier": "^3.6.2",
     "react": "^19.0.0",
@@ -22,6 +23,7 @@
     "zod": "^3.25.74"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
