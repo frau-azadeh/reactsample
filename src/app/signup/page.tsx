@@ -1,91 +1,108 @@
 "use client";
 
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema, SignupFormData } from "../lib/validations/auth";
-import { supabase } from "@/utils/supabaseClient";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function SignupPage() {
-  const router = useRouter();
-  const [formError, setFormError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
   });
 
   const onSubmit = async (data: SignupFormData) => {
-    setLoading(true);
-    setFormError("");
+    setServerError(null);
+    setSuccessMessage(null);
 
     try {
-      const { error } = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`, // ✅ استفاده از window.location
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify(data),
       });
 
-      if (error) {
-        setFormError(error.message);
-      } else {
-        router.push("/check-email");
+      const result = await res.json();
+
+      if (!res.ok) {
+        setServerError(result.error || "خطایی رخ داده است");
+        return;
       }
-    } catch (err) {
-      setFormError("Unexpected error occurred. Please try again.");
-    } finally {
-      setLoading(false);
+
+      setSuccessMessage("ثبت نام با موفقیت انجام شد! لطفا وارد شوید.");
+    } catch (error) {
+      setServerError("خطا در ارتباط با سرور. لطفا دوباره تلاش کنید.");
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 p-6 bg-white shadow-md rounded-lg">
-      <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
+    <main className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">
+      <h1 className="text-2xl mb-6 font-bold text-center">ثبت نام</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium mb-1">Email</label>
-          <input
-            type="email"
-            {...register("email")}
-            className="w-full border rounded-md p-2"
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
-        </div>
+      {serverError && <p className="mb-4 text-red-600">{serverError}</p>}
+      {successMessage && <p className="mb-4 text-green-600">{successMessage}</p>}
 
-        <div>
-          <label className="block text-sm font-medium mb-1">Password</label>
-          <input
-            type="password"
-            {...register("password")}
-            className="w-full border rounded-md p-2"
-          />
-          {errors.password && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <label className="block mb-1 font-semibold">ایمیل</label>
+        <input
+          type="email"
+          {...register("email")}
+          className="w-full mb-3 p-2 border rounded"
+          placeholder="example@mail.com"
+        />
+        {errors.email && (
+          <p className="mb-2 text-red-600">{errors.email.message}</p>
+        )}
 
-        {formError && <p className="text-red-600 text-sm mt-2">{formError}</p>}
+        <label className="block mb-1 font-semibold">رمز عبور</label>
+        <input
+          type="password"
+          {...register("password")}
+          className="w-full mb-3 p-2 border rounded"
+          placeholder="رمز عبور حداقل 6 کاراکتر"
+        />
+        {errors.password && (
+          <p className="mb-2 text-red-600">{errors.password.message}</p>
+        )}
+
+        <label className="block mb-1 font-semibold">نام</label>
+        <input
+          type="text"
+          {...register("name")}
+          className="w-full mb-3 p-2 border rounded"
+          placeholder="نام"
+        />
+        {errors.name && (
+          <p className="mb-2 text-red-600">{errors.name.message}</p>
+        )}
+
+        <label className="block mb-1 font-semibold">نام خانوادگی</label>
+        <input
+          type="text"
+          {...register("family")}
+          className="w-full mb-3 p-2 border rounded"
+          placeholder="نام خانوادگی"
+        />
+        {errors.family && (
+          <p className="mb-2 text-red-600">{errors.family.message}</p>
+        )}
 
         <button
           type="submit"
-          disabled={loading}
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
+          disabled={isSubmitting}
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
         >
-          {loading ? "Signing up..." : "Sign Up"}
+          {isSubmitting ? "در حال ارسال..." : "ثبت نام"}
         </button>
       </form>
-    </div>
+    </main>
   );
 }
