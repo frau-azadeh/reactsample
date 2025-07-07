@@ -14,10 +14,12 @@ export async function POST(req: NextRequest) {
     // اعتبارسنجی با zod
     const parsed = signupSchema.safeParse(body);
     if (!parsed.success) {
-      const errorMessages = parsed.error.errors.map((e) => e.message).join(", ");
+      const errorMessages = parsed.error.errors
+        .map((e) => e.message)
+        .join(", ");
       return NextResponse.json(
         { error: `Validation failed: ${errorMessages}` },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -25,7 +27,7 @@ export async function POST(req: NextRequest) {
 
     // بررسی وجود ایمیل در DB
     const { data: existingUser, error: findError } = await supabase
-      .from("users")
+      .from("user")
       .select("id")
       .eq("email", email)
       .single();
@@ -35,14 +37,14 @@ export async function POST(req: NextRequest) {
       console.error("Error checking existing user:", findError);
       return NextResponse.json(
         { error: "خطا در بررسی کاربر موجود" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     if (existingUser) {
       return NextResponse.json(
         { error: "کاربر قبلا ثبت نام کرده است" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -51,10 +53,10 @@ export async function POST(req: NextRequest) {
     const password_hash = bcrypt.hashSync(password, salt);
 
     // درج کاربر جدید
-    const { error: insertError } = await supabase.from("users").insert([
+    const { error: insertError } = await supabase.from("user").insert([
       {
-        first_name: name,
-        last_name: family,
+        name,
+        family,
         email,
         password_hash,
       },
@@ -62,26 +64,17 @@ export async function POST(req: NextRequest) {
 
     if (insertError) {
       console.error("Error inserting user:", insertError);
-      return NextResponse.json(
-        { error: insertError.message },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: insertError.message }, { status: 500 });
     }
 
     return NextResponse.json({ message: "ثبت نام موفق" }, { status: 201 });
   } catch (error: unknown) {
     if (isError(error)) {
       console.error("Signup error:", error.message);
-      return NextResponse.json(
-        { error: error.message },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: error.message }, { status: 500 });
     } else {
       console.error("Signup error: Unknown error", error);
-      return NextResponse.json(
-        { error: "خطای داخلی سرور" },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "خطای داخلی سرور" }, { status: 500 });
     }
   }
 }

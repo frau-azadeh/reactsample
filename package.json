@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
+    "@reduxjs/toolkit": "^2.8.2",
     "@supabase/supabase-js": "^2.50.3",
     "axios": "^1.7.9",
     "bcryptjs": "^3.0.2",
@@ -20,6 +21,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.60.0",
+    "react-redux": "^9.2.0",
     "zod": "^3.25.74"
   },
   "devDependencies": {
