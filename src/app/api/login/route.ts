@@ -9,13 +9,13 @@ export async function POST(request: Request) {
     if (!email || !password) {
       return NextResponse.json(
         { error: "ایمیل و رمز عبور الزامی است" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     // جستجوی کاربر با ایمیل
     const { data: user, error } = await supabase
-      .from("user")          // نام جدول شما (طبق کد شما "user")
+      .from("user") // نام جدول شما (طبق کد شما "user")
       .select("id, email, password_hash, name, family")
       .eq("email", email)
       .single();
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       // اگر کاربر پیدا نشد یا خطا
       return NextResponse.json(
         { error: "ایمیل یا رمز عبور اشتباه است" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     if (!isPasswordValid) {
       return NextResponse.json(
         { error: "ایمیل یا رمز عبور اشتباه است" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -49,13 +49,10 @@ export async function POST(request: Request) {
           family: user.family,
         },
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err) {
     console.error("Login error:", err);
-    return NextResponse.json(
-      { error: "خطای سرور" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "خطای سرور" }, { status: 500 });
   }
 }

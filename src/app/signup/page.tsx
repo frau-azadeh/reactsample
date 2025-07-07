@@ -3,14 +3,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  signupSchema,
-  SignupFormData,
-} from "../lib/validations/auth";
-import {
-  loginSchema,
-  LoginFormData,
-} from "../lib/validations/loginSchema";
+import { signupSchema, SignupFormData } from "../lib/validations/auth";
+import { loginSchema, LoginFormData } from "../lib/validations/loginSchema";
 import { useRouter } from "next/navigation";
 
 export default function AuthPage() {
@@ -95,7 +89,9 @@ export default function AuthPage() {
       </h1>
 
       {serverError && <p className="mb-4 text-red-600">{serverError}</p>}
-      {successMessage && <p className="mb-4 text-green-600">{successMessage}</p>}
+      {successMessage && (
+        <p className="mb-4 text-green-600">{successMessage}</p>
+      )}
 
       {isSignup ? (
         <form onSubmit={handleSubmitSignup(onSubmitSignup)} noValidate>
