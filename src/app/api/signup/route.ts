@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
     // بررسی وجود ایمیل در DB
     const { data: existingUser, error: findError } = await supabase
-      .from("users")
+      .from("user")
       .select("id")
       .eq("email", email)
       .single();
@@ -51,10 +51,10 @@ export async function POST(req: NextRequest) {
     const password_hash = bcrypt.hashSync(password, salt);
 
     // درج کاربر جدید
-    const { error: insertError } = await supabase.from("users").insert([
+    const { error: insertError } = await supabase.from("user").insert([
       {
-        first_name: name,
-        last_name: family,
+         name,
+         family,
         email,
         password_hash,
       },
