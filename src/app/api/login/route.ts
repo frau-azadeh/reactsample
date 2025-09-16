@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
-import { supabase } from "@/utils/supabaseClient";
 import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
+
+import { supabase } from "@/utils/supabaseClient";
 
 export async function POST(request: Request) {
   try {

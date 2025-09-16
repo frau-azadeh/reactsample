@@ -1,6 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/utils/supabaseClient";
 import bcrypt from "bcryptjs";
+import { NextRequest, NextResponse } from "next/server";
+
+import { supabase } from "@/utils/supabaseClient";
+
 import { signupSchema } from "../../lib/validations/auth";
 
 function isError(error: unknown): error is Error {

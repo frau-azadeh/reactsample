@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signupSchema, SignupFormData } from "../lib/validations/auth";
-import { loginSchema, LoginFormData } from "../lib/validations/loginSchema";
+import { useForm } from "react-hook-form";
+
 import { useRouter } from "next/navigation";
+
+import { SignupFormData, signupSchema } from "../lib/validations/auth";
+import { LoginFormData, loginSchema } from "../lib/validations/loginSchema";
 
 export default function AuthPage() {
   const [isSignup, setIsSignup] = useState(false);
