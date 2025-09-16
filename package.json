@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^5.1.1",
     "@reduxjs/toolkit": "^2.8.2",
     "@supabase/supabase-js": "^2.50.3",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "axios": "^1.7.9",
     "bcryptjs": "^3.0.2",
     "next": "^15.3.5",
